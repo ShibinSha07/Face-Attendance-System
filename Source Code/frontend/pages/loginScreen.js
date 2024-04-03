@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
 
 const LoginScreen = () => {
     
@@ -33,6 +33,11 @@ const LoginScreen = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
+      <Text>Don't have an account? <Pressable onPress={()=> {
+        console.log('clicked')
+      }}><Text>Sign Up</Text></Pressable> </Text>
+
     </View>
   );
 };

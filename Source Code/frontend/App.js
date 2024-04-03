@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import LoginScreen from './pages/loginScreen';
 
 export default function App() {
