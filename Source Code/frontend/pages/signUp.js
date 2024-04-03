@@ -69,6 +69,8 @@ const signUpScreen = () => {
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
+
+            <Text>Don't have an account?</Text>
         </View>
     );
 };
