@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
+import { createNativeStackNavigator,useNavigation } from '@react-navigation/native';
 
-const signUpScreen = () => {
+
+const SignUpScreen = () => {
+
+    const navigation = useNavigation();
     
   const [fullname, setName] = useState('');
+  const [department, setDepartment] = useState('');
+  const [registernumber, setRegnumber] = useState('');
+  const [college, setCollege] = useState('');
+  const [admissionno, setAdmsnNo] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
+  const handleSignUp = () => {
     // Implement your login logic here
     console.log('Email:', email);
     console.log('Password:', password);
@@ -34,7 +42,7 @@ const signUpScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Register Number"
-        value={regsternumber}
+        value={registernumber}
         onChangeText={setRegnumber}
         autoCapitalize="none"
       />
@@ -66,8 +74,8 @@ const signUpScreen = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('loginScreen')}>
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -114,4 +122,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default signUpScreen;
+export default SignUpScreen;
+

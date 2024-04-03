@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
+import { createNativeStackNavigator ,useNavigation } from '@react-navigation/native';
+
 
 const LoginScreen = () => {
-    
+
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,9 +34,11 @@ const LoginScreen = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('teacherHome')}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+      
+      <Text>Don't have an Account? <Pressable onPress={() => navigation.navigate('SignUp')}><Text>SignUp</Text></Pressable></Text>
     </View>
   );
 };
@@ -79,3 +85,23 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
+
+
+
+// import React from 'react';
+// import { View, Text, Button } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+
+// const LoginPage = () => {
+//   const navigation = useNavigation();
+
+//   return (
+//     <View>
+//       {/* Your login form elements go here */}
+//       <Text>Login Page</Text>
+//       <Button title="Go to Sign Up" onPress={() => navigation.navigate('SignUp')} />
+//     </View>
+//   );
+// };
+
+// export default LoginPage;
