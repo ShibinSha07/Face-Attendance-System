@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable, Pressable } from 'react-native';
 import { createNativeStackNavigator ,useNavigation } from '@react-navigation/native';
 
 
@@ -88,20 +88,3 @@ export default LoginScreen;
 
 
 
-// import React from 'react';
-// import { View, Text, Button } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
-
-// const LoginPage = () => {
-//   const navigation = useNavigation();
-
-//   return (
-//     <View>
-//       {/* Your login form elements go here */}
-//       <Text>Login Page</Text>
-//       <Button title="Go to Sign Up" onPress={() => navigation.navigate('SignUp')} />
-//     </View>
-//   );
-// };
-
-// export default LoginPage;

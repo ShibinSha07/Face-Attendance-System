@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
-import { createNativeStackNavigator,useNavigation } from '@react-navigation/native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
 
 
 const SignUpScreen = () => {
 
-    const navigation = useNavigation();
-    
+  const navigation = useNavigation();
+
   const [fullname, setName] = useState('');
   const [department, setDepartment] = useState('');
   const [registernumber, setRegnumber] = useState('');
@@ -74,7 +74,7 @@ const SignUpScreen = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('loginScreen')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('loginScreen')}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  subTitle:{
+  subTitle: {
     fontSize: 16,
     marginBottom: 20
   },
