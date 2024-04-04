@@ -1,22 +1,49 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet , ScrollView} from 'react-native';
 
 const AttendanceScreen = () => {
 
 
-    const data = [
+  const data = [
     { name: 'Mashood', attendance: true },
     { name: 'Rohan', attendance: true },
     { name: 'Shibinsha', attendance: false },
-    // Add more data here...
+    { name: 'Bassam', attendance: true },
+    { name: 'Ram', attendance: false },
+    { name: 'Ravi', attendance: true },
+    { name: 'Krishna', attendance: false },
+    { name: 'Noel', attendance: true },
+    { name: 'Fathima', attendance: false },
+    { name: 'Farshad', attendance: true },
+    { name: 'Ganga', attendance: true },
+    { name: 'Majidha', attendance: false },
+    { name: 'Murali', attendance: false },
+    { name: 'Pradeeb', attendance: true },
+    { name: 'Avinash', attendance: true },
+    { name: 'Fida', attendance: false },
+    { name: 'Muhammed', attendance: false },
+    { name: 'Fethlana', attendance: true },
+    { name: 'Jamsheer', attendance: false },
+    { name: 'Nived', attendance: true },
+    { name: 'Majid', attendance: false },
+
   ];
 
   return (
     <View style={styles.container}>
+
       <View style={styles.header}>
-        <Text style={styles.headerText}>Attendance details</Text>
+        <Text style={styles.headerText}>Attendance details                    <Text>S6   CSE</Text></Text>
       </View>
+
+      <View style={styles.headerRow}>
+        <Text style={styles.headText}>Roll No.</Text>
+        <Text style={styles.headText}>Name</Text>
+        <Text style={styles.headText}>Attendance</Text>
+      </View>
+
       <View style={styles.body}>
+
         {data.map((item, index) => (
           <View key={index} style={styles.row}>
             <Text style={styles.cell}>{index + 1}</Text>
@@ -24,23 +51,38 @@ const AttendanceScreen = () => {
             <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
           </View>
         ))}
+
       </View>
+
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     flex: 1,
-    padding:40,
   },
   header: {
     backgroundColor: 'purple',
-    padding: 10,
+    padding: 20,
+    height: 100
   },
   headerText: {
+    marginTop: 20,
     color: 'white',
     fontSize: 20,
+    fontWeight: 'bold'
+  },
+  headerRow: {
+    paddingTop: 10,
+    marginLeft: 10,
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'white'
+  },
+  headText: {
+    marginRight: 80
   },
   body: {
     backgroundColor: 'white',
@@ -50,11 +92,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 10,
+    marginLeft: 10
   },
   cell: {
     flex: 1,
     fontSize: 16,
+    // marginRight: 10
   },
+
 });
 
 export default AttendanceScreen;
