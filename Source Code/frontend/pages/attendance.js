@@ -26,11 +26,19 @@ const AttendanceScreen = () => {
     { name: 'Jamsheer', attendance: false },
     { name: 'Nived', attendance: true },
     { name: 'Majid', attendance: false },
+    { name: 'Pradeeb', attendance: true },
+    { name: 'Avinash', attendance: true },
+    { name: 'Fida', attendance: false },
+    { name: 'Muhammed', attendance: false },
+    { name: 'Fethlana', attendance: true },
+    { name: 'Jamsheer', attendance: false },
+    { name: 'Nived', attendance: true },
+    { name: 'Majid', attendance: false },
 
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
 
       <View style={styles.header}>
         <Text style={styles.headerText}>Attendance details                    <Text>S6   CSE</Text></Text>
@@ -54,7 +62,7 @@ const AttendanceScreen = () => {
 
       </View>
 
-    </View>
+    </ScrollView>
   );
 };
 
