@@ -52,7 +52,7 @@ def register_student(id,name,username,password):
     if connection:
         try:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO students (id,Name,username,password) VALUES (%s, %s, %s, %s)", (id,name,username,password))
+            cursor.execute("INSERT INTO students (id,Name,username,password) VALUES (%s, %s, %s)", (name,username,password))
             connection.commit()
             return True
         except Exception as e:

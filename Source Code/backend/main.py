@@ -20,5 +20,13 @@ def mark_attendance():
     success = dbconnector.mark_attendance(data['student_id'], data['course_id'],data['session_id'] ,data['status'])
     return jsonify({'success': success})
 
+@app.route('/student_registration', methods=['POST']) 
+def get_student_registration():
+    data = request.get_json()
+    success = dbconnector.register_student(data['name'],data['username'],data['password'])
+    return jsonify({'success': success})
+    
+
+
 if __name__ == '__main__':
     app.run(debug=True)
