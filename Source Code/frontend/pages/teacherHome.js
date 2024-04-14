@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     header: {
         // backgroundColor: '#6a5acd',
         marginTop: 20,
-        backgroundColor: 'blue',
+        backgroundColor: '#9181F4',
         padding: 30,
         // alignItems: 'center',
         // height: 150,

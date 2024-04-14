@@ -38,31 +38,31 @@ const AttendanceScreen = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+      
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Attendance details                    <Text>S6   CSE</Text></Text>
+        </View>
+      <ScrollView>
+        <View style={styles.headerRow}>
+          <Text style={styles.headText}>Roll No.</Text>
+          <Text style={styles.headText}>Name</Text>
+          <Text style={styles.headText}>Attendance</Text>
+        </View>
 
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Attendance details                    <Text>S6   CSE</Text></Text>
-      </View>
+        <View style={styles.body}>
 
-      <View style={styles.headerRow}>
-        <Text style={styles.headText}>Roll No.</Text>
-        <Text style={styles.headText}>Name</Text>
-        <Text style={styles.headText}>Attendance</Text>
-      </View>
+          {data.map((item, index) => (
+            <View key={index} style={styles.row}>
+              <Text style={styles.cell}>{index + 1}</Text>
+              <Text style={styles.cell}>{item.name}</Text>
+              <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
+            </View>
+          ))}
 
-      <View style={styles.body}>
-
-        {data.map((item, index) => (
-          <View key={index} style={styles.row}>
-            <Text style={styles.cell}>{index + 1}</Text>
-            <Text style={styles.cell}>{item.name}</Text>
-            <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
-          </View>
-        ))}
-
-      </View>
-
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor: 'purple',
+    backgroundColor: '#9181F4',
     padding: 20,
     height: 100
   },
