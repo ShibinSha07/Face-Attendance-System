@@ -36,4 +36,4 @@ def student_login():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.36") #server ip address
+    app.run(debug=True, host="192.168.1.37") #server ip address

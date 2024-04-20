@@ -27,7 +27,7 @@ async function healthCheck() {
 
 
 async function login(password, username) {
-    const res = await fetch("http://localhost:5000/student_login", {
+    const res = await fetch(`${server_url}/student_login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
