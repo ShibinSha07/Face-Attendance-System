@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
+import { createStudent } from "../utils/function.js"
 
 
 const SignUpScreen = () => {
@@ -15,8 +16,17 @@ const SignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     // Implement your login logic here
+
+    const studentData = {
+      name: fullname,
+      password: password,
+      username: email,
+    }
+
+    const res = createStudent(studentData)
+    console.log(res);
     console.log('Email:', email);
     console.log('Password:', password);
   };
