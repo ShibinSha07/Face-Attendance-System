@@ -16,8 +16,8 @@ const CameraScreen = () => {
       </View>
 
 
-      <TouchableOpacity style={styles.cameraIcon}>
-        <Icon name="camera-outline" size={100} color="#000" />
+      <TouchableOpacity style={styles.cameraIcon} onPress={() => navigation.navigate('camera')} >
+        <Icon name="camera-outline" size={100} color="#000"/>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.manual}>
