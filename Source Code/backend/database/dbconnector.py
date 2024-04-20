@@ -47,12 +47,12 @@ def mark_attendance(student_id, course_id,session_id, status):
             cursor.close()
             connection.close()
 
-def register_student(id,name,username,password):
+def register_student(name,username,password):
     connection = get_connection()
     if connection:
         try:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO students (id,Name,username,password) VALUES (%s, %s, %s)", (name,username,password))
+            cursor.execute("INSERT INTO students (Name,username,password) VALUES (%s, %s, %s)", (name,username,password))
             connection.commit()
             return True
         except Exception as e:
@@ -123,7 +123,7 @@ def course_registration(student_id,course_id):
             connection.close()
     
 
-
+get_connection()
 
 
 

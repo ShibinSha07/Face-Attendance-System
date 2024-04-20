@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
-import { createStudent } from "../utils/function.js"
+import { createStudent, healthCheck } from "../utils/function.js"
 
 
 const SignUpScreen = () => {
@@ -17,16 +17,34 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState('');
 
   const handleSignUp = async () => {
-    // Implement your login logic here
+
+    if (!fullname || !email || !password) {
+      console.log('Please fill in all required fields');
+      return;
+    }
 
     const studentData = {
       name: fullname,
       password: password,
       username: email,
+    };
+
+
+    console.log(studentData);
+
+    try {
+      const res = await createStudent(studentData);
+
+      if (res.ok && res.status == 200) {
+        console.log('Sign-up successful');
+        navigation.navigate('loginScreen');
+      } else {
+        console.error('Error:', res.status);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
     }
 
-    const res = createStudent(studentData)
-    console.log(res);
     console.log('Email:', email);
     console.log('Password:', password);
   };
@@ -84,10 +102,12 @@ const SignUpScreen = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('loginScreen')}>
+      <TouchableOpacity style={styles.button}
+        onPress={() => handleSignUp()}
+      >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
-    </View>
+    </View >
   );
 };
 

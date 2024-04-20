@@ -7,11 +7,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return "Hello, World!"
+    return jsonify("hello world")
 
 @app.route('/students', methods=['GET'])
 def get_students():
     students = dbconnector.get_students()
+    # print(students)
     return jsonify(students)
 
 @app.route('/attendance', methods=['POST'])
@@ -23,10 +24,11 @@ def mark_attendance():
 @app.route('/student_registration', methods=['POST']) 
 def get_student_registration():
     data = request.get_json()
+    # print(data)
     success = dbconnector.register_student(data['name'],data['username'],data['password'])
     return jsonify({'success': success})
     
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="192.168.1.37") #server ip address
