@@ -26,9 +26,14 @@ def get_student_registration():
     data = request.get_json()
     # print(data)
     success = dbconnector.register_student(data['name'],data['username'],data['password'])
+    return jsonify({'success': success})#hello
+
+@app.route('/student_login', methods=['GET']) 
+def student_login():
+    data=request.get_json()
+    success = dbconnector.student_login(data['username'],data['password'])
     return jsonify({'success': success})
-    
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.37") #server ip address
+    app.run(debug=True, host="192.168.1.36") #server ip address

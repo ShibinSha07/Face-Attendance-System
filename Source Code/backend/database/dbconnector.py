@@ -122,6 +122,23 @@ def course_registration(student_id,course_id):
             cursor.close()
             connection.close()
     
+def student_login(username,password):
+    connection=get_connection()
+    if connection:
+        try:
+            cursor=connection.cursor()
+            cursor.execute("SELECT * FROM students WHERE username=%s AND password=%s",(username,password))
+            result=cursor.fetchone()
+            if result:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+            cursor.close()
+            connection.close()
 
 get_connection()
 
