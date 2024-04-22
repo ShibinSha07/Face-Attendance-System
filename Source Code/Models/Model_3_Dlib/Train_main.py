@@ -39,5 +39,5 @@ def train(train_dir, model_save_path, n_neighbors=2, knn_algo='ball_tree', verbo
             pickle.dump(knn_clf, f)
         print("Training complete")
     return knn_clf
-train("train_img","classifier/trained_knn_model.clf") # add path here
+train(r"Source Code\Models\Model_3_Dlib\train_img",r"Source Code\Models\Model_3_Dlib\classifier\trained_knn_model.clf") # add path here
 
