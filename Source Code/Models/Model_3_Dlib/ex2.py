@@ -9,7 +9,7 @@ def mark_attendance(period, img_path):
     predictions = predict_faces(img_path)
 
     # Load attendance data from Excel
-    attendance_df = pd.read_excel("attendance.xlsx")
+    attendance_df = pd.read_excel(r"Source Code\Models\Model_3_Dlib\attendance.xlsx")
 
     # Create a set of existing student names from the attendance DataFrame
     existing_names = set(attendance_df['Student Name'])
@@ -30,7 +30,7 @@ def mark_attendance(period, img_path):
             attendance_df = attendance_df.append({'Student Name': name, period: 'Present'}, ignore_index=True)
 
     # Save updated attendance data to Excel
-    attendance_df.to_excel("attendance.xlsx", index=False)
+    attendance_df.to_excel(r"Source Code\Models\Model_3_Dlib\attendance.xlsx", index=False)
 
     # Display image with recognized faces and names
     img = Image.open(img_path)
@@ -44,7 +44,7 @@ def mark_attendance(period, img_path):
         # Draw text (name) above the face
         draw.text((left, top - 20), name, fill=(255, 255, 255), font=font)
 
-    img = img.resize((300, 200), Image.ANTIALIAS)  # Resize the image for display
+    #img.thumbnail((300, 200), Image.ANTIALIAS)  # Resize the image for display
     img = ImageTk.PhotoImage(img)
     img_label.config(image=img)
     img_label.image = img

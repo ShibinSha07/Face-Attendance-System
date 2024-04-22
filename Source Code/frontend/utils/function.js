@@ -1,5 +1,5 @@
 
-const server_url = 'http://192.168.1.37:5000';//ip address of the server
+const server_url = 'http://192.168.1.32:5000';//ip address of the server
 
 
 async function createStudent(student) {
