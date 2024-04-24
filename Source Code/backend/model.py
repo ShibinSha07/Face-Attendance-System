@@ -4,7 +4,7 @@ import face_recognition
 
 def predict_faces(img_path, threshold=0.6):
     # Model path
-    model_path = r"Source_Code\Models\Model_3_Dlib\classifier\trained_knn_model.clf"
+    model_path = r"Source Code\Models\Model_3_Dlib\classifier\trained_knn_model.clf"
     
     # Load a trained KNN model
     with open(model_path, 'rb') as f:
