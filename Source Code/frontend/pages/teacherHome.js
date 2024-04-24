@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     header: {
         // backgroundColor: '#6a5acd',
         // marginTop: 20,
-        backgroundColor: 'blue',
+        backgroundColor: '#007bff',
         padding: 40,
         // alignItems: 'center',
         // height: 150,

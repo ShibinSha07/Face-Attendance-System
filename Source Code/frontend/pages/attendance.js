@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor: 'blue',
+    backgroundColor: '#007bff',
     padding: 30,
     height: 120
   },

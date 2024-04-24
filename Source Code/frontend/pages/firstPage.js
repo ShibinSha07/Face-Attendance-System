@@ -10,7 +10,7 @@ const FirstPage = () => {
     return (
         <View style={styles.body}>
 
-            <Text style={styles.heading}><Text style={{ color: 'blue' }}>Smart</Text> Attendance</Text>
+            <Text style={styles.heading}><Text style={{ color: '#007bff' }}>Smart</Text> Attendance</Text>
 
             <Image source={require('../assets/firstScreen.png')}
                 style={{ width: 300, height: 200 , marginTop: 100, marginLeft: 20}}

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     // backgroundColor: '#9181F4'
-    backgroundColor: 'blue'
+    backgroundColor: '#007bff'
   },
   headerText: {
     fontSize: 50,
