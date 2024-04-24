@@ -32,19 +32,18 @@ const TeacherHomePage = () => {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        padding: 20,
+        // padding: 20,
         flex: 1,
         backgroundColor: '#f0f0f0',
-        padding: 10,
     },
     header: {
         // backgroundColor: '#6a5acd',
-        marginTop: 20,
-        backgroundColor: '#9181F4',
-        padding: 30,
+        // marginTop: 20,
+        backgroundColor: 'blue',
+        padding: 40,
         // alignItems: 'center',
         // height: 150,
-        borderRadius: 5,
+        // borderRadius: 5,
         marginBottom: 20,
     },
     headerText: {

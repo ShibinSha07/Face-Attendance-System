@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         justifyContent: 'center',
+
     },
     buttonText: {
         // backgroundColor: 'blue',
