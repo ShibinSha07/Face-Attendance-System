@@ -43,19 +43,56 @@ def allowed_file(filename):
     return '' in filename and filename. rsplit('.', 1) [1]. lower() in ALLOWED_EXTENSIONS
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-@app. route('/media/upload', methods= ['POST' ])
-def upload_media():
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
     if 'file' not in request.files:
-        return jsonify({'error': 'media not provided'}), 400
-    file = request. files ['file']
-    if file.filename =='':
-        return jsonify({'error': 'no file selected'}), 400
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file. filename)
-    file.save(os.path.join(app.config ['UPLOAD_FOLDER'], filename) )
-    prediction=predict_faces(file)
-    print(prediction)
-    return jsonify({'msg': 'media uploaded successfully'})
+        return jsonify({'error': 'No file part'})
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'})
+
+    # # Save the uploaded file to a location
+    # file.save('uploads/' + file.filename)
+    
+    
+    # Ensure the upload directory exists
+    upload_dir = os.path.join('uploads')
+    if not os.path.exists(upload_dir):
+        os.makedirs(upload_dir)
+
+    # Save the uploaded file to the specified location
+    file_path = os.path.join(upload_dir, secure_filename(file.filename))
+    file.save(file_path)
+
+
+    return jsonify({'message': 'File uploaded successfully'})
+
+
+
+
+# @app. route('/upload', methods= ['POST' ])
+# def upload_file():
+#     if 'file' not in request.files:
+#         return jsonify({'error': 'No file part'}), 400
+    
+#     file = request. files ['file']
+    
+#     if file.filename =='':
+#         return jsonify({'error': 'No file selected'}), 400
+    
+    
+
+
+#     if file and allowed_file(file.filename):
+#         filename = secure_filename(file. filename)
+#     file.save(os.path.join(app.config ['UPLOAD_FOLDER'], filename) )
+#     prediction=predict_faces(file)
+#     print(prediction)
+#     return jsonify({'msg': 'File uploaded successfully'})
 
 
 
@@ -63,4 +100,4 @@ def upload_media():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.37") #server ip address
+    app.run(debug=True, host="172.20.10.2") #server ip address

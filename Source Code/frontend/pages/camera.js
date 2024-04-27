@@ -35,18 +35,41 @@ export default function App() {
     }
   };
 
-  const savePicture = async () => {
+  const uploadPicture = async () => {
     if (image) {
       try {
         const asset = await MediaLibrary.createAssetAsync(image);
-        alert('Picture saved! 🎉');
+        const response = await fetch(image);
+        const data = new FormData();
+        data.append('file',{
+          uri: image,
+          type: 'image/jpeg',
+          name: 'image.jpg'
+        })
+        const res = await fetch('http://172.20.10.2:5000/upload', {
+          method: 'POST',
+          body: data,
+        });
+        const json = await res.json();
+        console.log(json);
         setImage(null);
-        console.log('saved successfully');
       } catch (error) {
-        console.log(error);
+        console.error('Upload error:', error);
       }
     }
   };
+  // const savePicture = async () => {
+  //   if (image) {
+  //     try {
+  //       const asset = await MediaLibrary.createAssetAsync(image);
+  //       alert('Picture saved! 🎉');
+  //       setImage(null);
+  //       console.log('saved successfully');
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
 
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;
@@ -111,7 +134,7 @@ export default function App() {
               onPress={() => setImage(null)}
               icon="retweet"
             />
-            <Button title="Save" onPress={savePicture} icon="check" />
+            <Button title="Upload" onPress={uploadPicture} icon="check" />
           </View>
         ) : (
           <Button title="Take a picture" onPress={takePicture} icon="camera" />
