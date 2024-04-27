@@ -29,6 +29,15 @@ def get_student_registration():
     success = dbconnector.register_student(data['name'],data['username'],data['password'])
     return jsonify({'success': success})#hello
 
+@app.route('/faculty_registration',methods=['POST'])
+def get_faculty_registration():
+    data=request.json
+    print(data)
+    success = dbconnector.register_faculty(data['name'],data['username'],data['password'])
+    return jsonify({'success':success})
+
+
+
 @app.route('/student_login', methods=['GET']) 
 def student_login():
     data=request.get_json()
@@ -43,19 +52,57 @@ def allowed_file(filename):
     return '' in filename and filename. rsplit('.', 1) [1]. lower() in ALLOWED_EXTENSIONS
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-@app. route('/media/upload', methods= ['POST' ])
-def upload_media():
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
     if 'file' not in request.files:
-        return jsonify({'error': 'media not provided'}), 400
-    file = request. files ['file']
-    if file.filename =='':
-        return jsonify({'error': 'no file selected'}), 400
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file. filename)
-    file.save(os.path.join(app.config ['UPLOAD_FOLDER'], filename) )
-    prediction=predict_faces(file)
-    print(prediction)
-    return jsonify({'msg': 'media uploaded successfully'})
+        return jsonify({'error': 'No file part'})
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'})
+
+    # # Save the uploaded file to a location
+    file.save('Source Code/backend/uploads/' + file.filename)
+
+    
+    
+    # # Ensure the upload directory exists
+    # upload_dir = os.path.join('uploads')
+    # if not os.path.exists(upload_dir):
+    #     os.makedirs(upload_dir)
+
+    # # Save the uploaded file to the specified location
+    # file_path = os.path.join(upload_dir, secure_filename(file.filename))
+    # file.save(file_path)
+
+
+    return jsonify({'message': 'File uploaded successfully'})
+
+
+
+
+# @app. route('/upload', methods= ['POST' ])
+# def upload_file():
+#     if 'file' not in request.files:
+#         return jsonify({'error': 'No file part'}), 400
+    
+#     file = request. files ['file']
+    
+#     if file.filename =='':
+#         return jsonify({'error': 'No file selected'}), 400
+    
+    
+
+
+#     if file and allowed_file(file.filename):
+#         filename = secure_filename(file. filename)
+#     file.save(os.path.join(app.config ['UPLOAD_FOLDER'], filename) )
+#     prediction=predict_faces(file)
+#     print(prediction)
+#     return jsonify({'msg': 'File uploaded successfully'})
 
 
 
