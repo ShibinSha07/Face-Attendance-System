@@ -41,7 +41,7 @@ const AttendanceScreen = () => {
     <View style={styles.container}>
       
         <View style={styles.header}>
-          <Text style={styles.headerText}>Attendance details                    <Text>S6   CSE</Text></Text>
+          <Text style={styles.headerText}>Attendance details               <Text>S6   CSE</Text></Text>
         </View>
       <ScrollView>
         <View style={styles.headerRow}>
@@ -72,9 +72,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor: '#9181F4',
-    padding: 20,
-    height: 100
+    backgroundColor: '#007bff',
+    padding: 30,
+    height: 120
   },
   headerText: {
     marginTop: 20,

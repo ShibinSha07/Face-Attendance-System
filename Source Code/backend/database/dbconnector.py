@@ -8,7 +8,7 @@ def get_connection():
             host='localhost',
             database='fba',
             user='root',
-            password='1234'
+            password='mysql'
         )
 
         if connection.is_connected():
@@ -62,12 +62,12 @@ def register_student(name,username,password):
             cursor.close()
             connection.close()
 
-def register_faculty(f_id,name,username,password):
+def register_faculty(name,username,password):
     connection = get_connection()
     if connection:
         try:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO faculty (f_id,Name,username,password) VALUES (%s, %s, %s, %s)", (f_id,name,username,password))
+            cursor.execute("INSERT INTO faculty (Name,username,password) VALUES (%s, %s, %s)", (name,username,password))
             connection.commit()
             return True
         except Exception as e:
