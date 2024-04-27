@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }, text: {
     fontSize: 20,
+    marginTop:5,
     marginBottom: 10,
   },
   account: {
