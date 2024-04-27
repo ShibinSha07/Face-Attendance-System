@@ -29,6 +29,15 @@ def get_student_registration():
     success = dbconnector.register_student(data['name'],data['username'],data['password'])
     return jsonify({'success': success})#hello
 
+@app.route('/faculty_registration',methods=['POST'])
+def get_faculty_registration():
+    data=request.json
+    print(data)
+    success = dbconnector.register_faculty(data['name'],data['username'],data['password'])
+    return jsonify({'success':success})
+
+
+
 @app.route('/student_login', methods=['GET']) 
 def student_login():
     data=request.get_json()
@@ -63,4 +72,4 @@ def upload_media():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.37") #server ip address
+    app.run(debug=True,) #server ip address
