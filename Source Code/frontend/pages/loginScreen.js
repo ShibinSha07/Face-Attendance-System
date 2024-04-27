@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable, Switch } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
 
 
@@ -16,9 +16,24 @@ const LoginScreen = () => {
   //   console.log('Email:', email);
   //   console.log('Password:', password);
   // };
+    const [isEnabled, setIsEnabled] = useState(false);
+  
+    const toggleSwitch = () => {
+      setIsEnabled(previousState => !previousState);
+    };
+
 
   return (
     <View style={styles.container}>
+       
+       <Switch
+        trackColor={{ false: "#767577", true: "#81b0ff" }}
+        thumbColor={isEnabled ? "#007bff" : "#f4f3f4"}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}
+      />
+      <Text style={styles.text}>{isEnabled ? 'Enabled' : 'Disabled'}</Text>
       <Text style={styles.title}>Login </Text>
       <Text style={styles.subTitle}>Smart Attendence System</Text>
       <TextInput
@@ -92,6 +107,9 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 18,
     fontWeight: 'bold',
+  }, text: {
+    fontSize: 20,
+    marginBottom: 10,
   },
   account: {
     color: 'blue',
@@ -104,6 +122,3 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
-
-
-
