@@ -46,8 +46,11 @@ export default function App() {
           type: 'image/jpeg',
           name: 'image.jpg'
         })
-        const res = await fetch('http://172.20.10.2:5000/upload', {
+        const res = await fetch('http://192.168.1.53:5000/upload1', {
           method: 'POST',
+          // headers: {
+          //   'Content-Type': 'multipart/form-data', // Set the content type
+          // },
           body: data,
         });
         const json = await res.json();
