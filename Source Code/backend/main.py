@@ -65,7 +65,7 @@ def student_login():
     return jsonify({'success': success})
 
 
-UPLOAD_FOLDER = r'Source Code\backend\img'
+UPLOAD_FOLDER = r'Source Code\backend\uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
@@ -86,17 +86,7 @@ def upload_file():
 
     # # Save the uploaded file to a location
     file.save('Source Code/backend/uploads/' + file.filename)
-
-    
-    
-    # # Ensure the upload directory exists
-    # upload_dir = os.path.join('uploads')
-    # if not os.path.exists(upload_dir):
-    #     os.makedirs(upload_dir)
-
-    # # Save the uploaded file to the specified location
-    # file_path = os.path.join(upload_dir, secure_filename(file.filename))
-    # file.save(file_path)
+    # predictions=predict
 
 
     return jsonify({'message': 'File uploaded successfully'})
@@ -104,25 +94,28 @@ def upload_file():
 
 
 
-# @app. route('/upload', methods= ['POST' ])
-# def upload_file():
-#     if 'file' not in request.files:
-#         return jsonify({'error': 'No file part'}), 400
+@app.route('/upload1', methods=['POST'])
+def upload_file1():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
     
-#     file = request. files ['file']
+    file = request.files['file']
     
-#     if file.filename =='':
-#         return jsonify({'error': 'No file selected'}), 400
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
     
-    
-
-
-#     if file and allowed_file(file.filename):
-#         filename = secure_filename(file. filename)
-#     file.save(os.path.join(app.config ['UPLOAD_FOLDER'], filename) )
-#     prediction=predict_faces(file)
-#     print(prediction)
-#     return jsonify({'msg': 'File uploaded successfully'})
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+        # Assuming predict_faces function takes the file path as input
+        
+        prediction = predict_faces(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        print(prediction)
+        
+        return jsonify({'msg': 'File uploaded successfully'}), 200
+    else:
+        return jsonify({'error': 'Invalid file format'}), 400
 
 
 
@@ -130,4 +123,4 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.37") #server ip address
+    app.run(debug=True, host="192.168.1.53") #server ip address

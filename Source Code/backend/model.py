@@ -16,6 +16,11 @@ def predict_faces(img_path, threshold=0.6):
 
     # Find face locations and encodings
     face_locations = face_recognition.face_locations(img)
+    
+    if not face_locations:
+        # Return an empty list if no faces are found
+        return [[]]
+    
     faces_encodings = face_recognition.face_encodings(img, known_face_locations=face_locations)
 
     # Use the KNN model to find the best matches for the faces
@@ -28,9 +33,9 @@ def predict_faces(img_path, threshold=0.6):
     return predictions
 
 # Example usage:
-# img_path = r"Source Code\Models\Model_3_Dlib\train_img\Bassam\BASSAM.png"
-# predictions = predict_faces(img_path)
-# print(predictions)
+img_path = r"Source Code\backend\uploads\image.jpg"
+predictions = predict_faces(img_path)
+print(predictions)
 # # for name, (top, right, bottom, left) in predictions:
 #     # Scale back the face locations since the image was resized
 #     top *= 4
