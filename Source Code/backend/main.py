@@ -36,6 +36,26 @@ def get_faculty_registration():
     success = dbconnector.register_faculty(data['name'],data['username'],data['password'])
     return jsonify({'success':success})
 
+@app.route('/register_course',methods=['POST'])
+def get_register_course():
+    data=request.json
+    print(data)
+    success = dbconnector.register_course(data['Name'],data['code'],data['credit'],data['f_id'])
+    return jsonify({'success':success})
+
+@app.route('/register_session',methods=['POST'])
+def register_session():
+    data=request.json
+    print(data)
+    success = dbconnector.register_session(data['date'],data['hour'])
+    return jsonify({'success':success})
+
+@app.route('/course_registration',methods=['POST'])
+def course_registration():
+   data=request.json
+   print(data)
+   success = dbconnector.course_registration(data['student_id'],data['course_id'])
+   return jsonify({'success':success})
 
 
 @app.route('/student_login', methods=['GET']) 

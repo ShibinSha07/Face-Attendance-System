@@ -77,12 +77,12 @@ def register_faculty(name,username,password):
             cursor.close()
             connection.close()
 
-def register_course(c_id,Name,code,credit,f_id):
+def register_course(Name,code,credit,f_id):
     connection = get_connection()
     if connection:
         try:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO course (c_id,Name,code,credit,f_id) VALUES (%s, %s, %s, %s, %s)", (c_id,Name,code,credit,f_id))
+            cursor.execute("INSERT INTO course (Name,code,credit,f_id) VALUES (%s, %s, %s, %s)", (Name,code,credit,f_id))
             connection.commit()
             return True
         except Exception as e:
@@ -92,12 +92,12 @@ def register_course(c_id,Name,code,credit,f_id):
             cursor.close()
             connection.close()
 
-def register_session(s_id,date,hour):
+def register_session(date,hour):
     connection = get_connection()
     if connection:
         try:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO session (s_id,date,hour) VALUES (%s, %s, %s)", (s_id,date,hour))
+            cursor.execute("INSERT INTO session (date,hour) VALUES ( %s, %s)", (date,hour))
             connection.commit()
             return True
         except Exception as e:
@@ -139,6 +139,7 @@ def student_login(username,password):
         finally:
             cursor.close()
             connection.close()
+            
 
 get_connection()
 
