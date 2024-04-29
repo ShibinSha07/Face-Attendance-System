@@ -16,6 +16,11 @@ def predict_faces(img_path, threshold=0.6):
 
     # Find face locations and encodings
     face_locations = face_recognition.face_locations(img)
+    
+    if not face_locations:
+        # Return an empty list if no faces are found
+        return [[]]
+    
     faces_encodings = face_recognition.face_encodings(img, known_face_locations=face_locations)
 
     # Use the KNN model to find the best matches for the faces
