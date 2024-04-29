@@ -17,7 +17,7 @@ const CameraScreen = () => {
     <View style={styles.container}>
 
       <View style={styles.header}>
-        <Text style={styles.headerText}>Subject</Text>
+        <Text style={styles.headerText}>Take Attendence</Text>
       </View>
 
       <View style={styles.sessionContainer}>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   headerText: {
     textAlign: 'center',
     fontSize: 25,
-    padding: 35,
+    padding: 15,
     color: 'white',
     fontWeight: 'bold'
 },
