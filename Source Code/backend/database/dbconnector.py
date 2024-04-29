@@ -153,7 +153,7 @@ def get_attendance_percentage(student_id, course_id):
             cursor.execute(query, (student_id, course_id))
             result = cursor.fetchone()
             attendance_percentage = result[0]
-            return attendance_percentage
+            return attendance_percentage if attendance_percentage!=None else 0
     except Exception as e:
         print(f"Error: {e}")
     finally:
@@ -212,5 +212,4 @@ def get_students_in_course(c_id):
 
 
 get_connection()
-
 

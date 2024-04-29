@@ -129,6 +129,16 @@ def upload_file1(c_id, s_id):
     else:
         return jsonify({'error': 'Invalid file format'}), 400
 
+@app.route('/<id>/get_attendance', methods=['GET'])
+def get_attendance(id):
+    list1=[]
+    for i in range(6):
+        attendance = dbconnector.get_attendance_percentage(id, i)
+        print(attendance)
+        list1.append(attendance)
+        
+    return jsonify(list1)
+
 
 
 
