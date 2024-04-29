@@ -54,7 +54,7 @@ const LoginScreen = () => {
         secureTextEntry
       />
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('teacherHome')}>
+      <TouchableOpacity style={styles.button} onPress={() => isEnabled ? navigation.navigate('studentHome') : navigation.navigate('teacherHome')}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 

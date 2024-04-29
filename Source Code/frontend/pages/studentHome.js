@@ -6,7 +6,8 @@ import AppContext from '../utils/context';
 
 const StudentHomePage = () => {
     const { setSub } = useContext(AppContext);
-    
+    const navigation = useNavigation();
+
     // Sample data containing subject names and their respective percentages
     const subjectData = [
         { name: 'Subject 1', percentage: 80 },
@@ -21,7 +22,7 @@ const StudentHomePage = () => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.headerText}>Student Name</Text>
-                <Text style={styles.headerText}>Department</Text>
+                {/* <Text style={styles.headerText}>Department</Text> */}
             </View>
 
             {/* Render subject buttons with their respective percentages */}
@@ -31,7 +32,7 @@ const StudentHomePage = () => {
                     style={styles.button}
                     onPress={() => setSub(subject.name.charAt(subject.name.length - 1))}
                 >
-                    <Text style={styles.buttonText}>{subject.name} - {subject.percentage}%</Text>
+                    <Text style={styles.buttonText}>{subject.name}                                     {subject.percentage}%</Text>
                 </TouchableOpacity>
             ))}
         </View>
