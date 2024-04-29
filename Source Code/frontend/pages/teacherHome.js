@@ -16,8 +16,8 @@ const TeacherHomePage = () => {
         <View style={styles.container}>
 
             <View style={styles.header}>
-                <Text style={styles.headerText}>Teacher Name : </Text>
-                <Text style={styles.headerText}>Department : </Text>
+                <Text style={styles.headerText}>Teacher Name  </Text>
+                <Text style={styles.headerText}>Department  </Text>
             </View>
 
             {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('cameraScreen')}>
@@ -46,19 +46,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0f0f0',
     },
     header: {
-        // backgroundColor: '#6a5acd',
-        // marginTop: 20,
         backgroundColor: '#007bff',
-        padding: 40,
-        // alignItems: 'center',
-        // height: 150,
-        // borderRadius: 5,
-        marginBottom: 20,
-    },
-    headerText: {
-        color: '#fff',
-        fontSize: 20,
-    },
+        padding: 30,
+        height: 120
+        },
+        headerText: {
+            textAlign: 'center',
+            fontSize: 25,
+            // padding: 35,
+            color: 'white',
+            fontWeight: 'bold'
+        },
+   
     button: {
         backgroundColor: '#fff',
         padding: 10,

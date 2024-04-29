@@ -60,19 +60,19 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    height: 150,
-    width: '100%',
-    alignItems: 'center',
-    // backgroundColor: '#9181F4'
-    backgroundColor: '#007bff'
-  },
+    backgroundColor: '#007bff',
+    padding: 30,
+    height: 120,
+    width: '100%'
+    },
+ 
   headerText: {
-    fontSize: 50,
-    marginTop: 50,
+    textAlign: 'center',
+    fontSize: 25,
+    padding: 35,
     color: 'white',
-    fontWeight: 'bold',
-
-  },
+    fontWeight: 'bold'
+},
   label: {
     fontSize: 25,
   },

@@ -1,52 +1,39 @@
 import React, { useState } from 'react'
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Touchable, TouchableOpacity } from 'react-native';
 
 const Manual = () => {
     const navigation = useNavigation();
 
-    const data = [
-        { name: 'Mashood', attendance: true },
-        { name: 'Rohan', attendance: true },
-        { name: 'Shibinsha', attendance: false },
-        { name: 'Bassam', attendance: true },
-        { name: 'Ram', attendance: false },
-        { name: 'Ravi', attendance: true },
-        { name: 'Krishna', attendance: false },
-        { name: 'Noel', attendance: true },
-        { name: 'Fathima', attendance: false },
-        { name: 'Farshad', attendance: true },
-        { name: 'Ganga', attendance: true },
-        { name: 'Majidha', attendance: false },
-        { name: 'Murali', attendance: false },
-        { name: 'Pradeeb', attendance: true },
-        { name: 'Avinash', attendance: true },
-        { name: 'Fida', attendance: false },
-        { name: 'Muhammed', attendance: false },
-        { name: 'Fethlana', attendance: true },
-        { name: 'Jamsheer', attendance: false },
-        { name: 'Nived', attendance: true },
-        { name: 'Majid', attendance: false },
-        { name: 'Pradeeb', attendance: true },
-        { name: 'Avinash', attendance: true },
-        { name: 'Fida', attendance: false },
-        { name: 'Muhammed', attendance: false },
-        { name: 'Fethlana', attendance: true },
-        { name: 'Jamsheer', attendance: false },
-        { name: 'Nived', attendance: true },
-        { name: 'Majid', attendance: false },
 
-    ];
-
-    const [isChecked, setIsChecked] = useState(false);
-
-    const handleCheckboxChange = (index) => {
-        const newData = [...data];
-        newData[index].attendance = !newData[index].attendance;
-        setIsChecked(newData[index].attendance);
+    const toggleAttendance = (index) => {
+        setAttendanceData((prevData) => {
+            const newData = [...prevData];
+            newData[index].attendance = !newData[index].attendance;
+            return newData;
+        });
     };
+
+    const [attendanceData, setAttendanceData] = useState( [
+        { name: 'Mashood', attendance: true },
+        { name: 'Rohan', attendance: true},
+        { name: 'Shibinsha', attendance: true},
+        { name: 'Bassam', attendance: true},
+        { name: 'Ram', attendance: true},
+        { name: 'Ravi', attendance: true},
+        { name: 'Krishna' , attendance: true},
+        { name: 'Noel' , attendance: true},
+        { name: 'Fathima', attendance: true },
+
+
+    ]);
+
+    
+
     return (
+
         <View>
+
             <View style={styles.header}>
                 <Text style={styles.headerText}>Mark the Attendance</Text>
             </View>
@@ -60,16 +47,31 @@ const Manual = () => {
 
                 <View style={styles.body}>
 
-                    {data.map((item, index) => (
+                    {attendanceData.map((item, index) => (
                         <View key={index} style={styles.row}>
                             <Text style={styles.cell}>{index + 1}</Text>
                             <Text style={styles.cell}>{item.name}</Text>
-                            <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
-
+                            {/* <TouchableOpacity  onPress={toggleSwitch}>
+                                <Text style={styles.cell}>{item.attendance ? '❌' : '✅'}</Text>
+                            </TouchableOpacity> */}
+                            <TouchableOpacity onPress={() => toggleAttendance(index)}>
+                                <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
+                            </TouchableOpacity>
                         </View>
                     ))}
 
                 </View>
+                {/* <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text> */}
+                {/* <TouchableOpacity onValueChange={toggleSwitch}
+                    value={isEnabled}> 
+                  <Text>{isEnabled ? '✅' : '❌'}</Text>
+                </TouchableOpacity> */}
+                {/* <TouchableOpacity onPress={toggleSwitch}>
+                        <Text>
+                            {toggleState ? '✅' : '❌'}
+                        </Text>
+                    </TouchableOpacity> */}
+
             </ScrollView>
 
         </View>
@@ -79,9 +81,10 @@ const Manual = () => {
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: 'blue',
-        height: 100
-    },
+        backgroundColor: '#007bff',
+        padding: 30,
+        height: 120
+        },
     headerText: {
         textAlign: 'center',
         fontSize: 25,
