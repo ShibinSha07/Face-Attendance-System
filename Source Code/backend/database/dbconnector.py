@@ -139,7 +139,21 @@ def student_login(username,password):
         finally:
             cursor.close()
             connection.close()
-            
+     
+def student_list(c_id,s_id):
+    connection=get_connection()
+    if connection:
+        try:
+            cursor=connection.cursor()
+            cursor.execute("SELECT * FROM attendance WHERE c_id=%s AND s_id=%s",(c_id,s_id))
+            result=cursor.fetchall()
+            return result
+        except Exception as e:
+            print(e)
+            return False
+        finally:
+            cursor.close()
+            connection.close()       
 
 get_connection()
 

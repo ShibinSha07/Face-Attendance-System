@@ -74,7 +74,11 @@ def allowed_file(filename):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-
+@app.route('/<c_id>/<s_id>/attendance_list', methods=['GET'])
+def attendance_list(c_id,s_id):
+    student_list=dbconnector.student_list(c_id,s_id)
+    return jsonify(student_list)
+    
 
 
 
@@ -109,4 +113,4 @@ def upload_file1(c_id, s_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.53") #server ip address
+    app.run(debug=True, host="192.168.1.29") #server ip address
