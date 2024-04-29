@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { server_url } from '../utils/function';
+import AppContext from '../utils/context'
+
 
 const AttendanceScreen = () => {
+  const { sub,session } = useContext(AppContext)
+const res=fetch(`${server_url}/${sub}/${session}/attendance_list`)
+console.log(res.data)
+const temp=res.data
+
 
 
   const data = [
@@ -51,7 +59,7 @@ const AttendanceScreen = () => {
           <Text style={styles.headText}>Attendance</Text>
         </View>
 
-        <View style={styles.body}>
+        {/* <View style={styles.body}>
 
           {data.map((item, index) => (
             <View key={index} style={styles.row}>
@@ -61,6 +69,13 @@ const AttendanceScreen = () => {
             </View>
           ))}
 
+        </View> */}
+        <View>
+          {temp.map((e)=>{
+            <Text>
+              {`${e[0]} ${e[1]}` }
+            </Text>
+          })}
         </View>
       </ScrollView>
     </View>
