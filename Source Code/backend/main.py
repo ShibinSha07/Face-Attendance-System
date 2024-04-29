@@ -74,39 +74,13 @@ def allowed_file(filename):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'})
-
-    file = request.files['file']
-
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'})
-
-    # # Save the uploaded file to a location
-    file.save('Source Code/backend/uploads/' + file.filename)
-    
-    
-    
-    # # Ensure the upload directory exists
-    # upload_dir = os.path.join('uploads')
-    # if not os.path.exists(upload_dir):
-    #     os.makedirs(upload_dir)
-
-    # # Save the uploaded file to the specified location
-    # file_path = os.path.join(upload_dir, secure_filename(file.filename))
-    # file.save(file_path)
-    # predictions=predict
-
-
-    return jsonify({'message': 'File uploaded successfully'})
 
 
 
 
-@app.route('/upload1', methods=['POST'])
-def upload_file1():
+
+@app.route('/<c_id>/<s_id>/upload1', methods=['POST'])
+def upload_file1(c_id, s_id):
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
     
@@ -123,7 +97,8 @@ def upload_file1():
         
         prediction = predict_faces(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         print(prediction)
-        
+        print(c_id)
+        print(s_id)
         return jsonify({'msg': 'File uploaded successfully'}), 200
     else:
         return jsonify({'error': 'Invalid file format'}), 400

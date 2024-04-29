@@ -17,7 +17,7 @@ const CameraScreen = () => {
     <View style={styles.container}>
 
       <View style={styles.header}>
-        <Text style={styles.headerText}>Semester</Text>
+        <Text style={styles.headerText}>Subject</Text>
       </View>
 
       <View style={styles.sessionContainer}>

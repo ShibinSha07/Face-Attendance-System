@@ -8,19 +8,19 @@ export const AppProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [sem, setSem] = useState('');
+    const [sub, setSub] = useState('');
     const [session, setSession] = useState('');
     
 
     useEffect(() => {
         console.log("Email Updated: ", email);
-        console.log("sem Updated: ", sem);
+        console.log("subject Updated: ", sub);
         console.log("session Updated: ", session);
-    }, [email,sem, session]);
+    }, [email,sub, session]);
 
 
     return (
-        <AppContext.Provider value={{ setEmail, username, setUsername, password, setPassword, sem, setSem, session, setSession }}>
+        <AppContext.Provider value={{ setEmail, username, setUsername, password, setPassword, sub, setSub, session, setSession }}>
             {children}
         </AppContext.Provider>
     );

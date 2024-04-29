@@ -5,8 +5,13 @@ import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import Button from './Button';
 import { server_url } from '../utils/function';
+import { useContext } from 'react';
+import AppContext from '../utils/context';
+
 
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
+
+
 
 export default function App() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -14,6 +19,8 @@ export default function App() {
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
   const [image, setImage] = useState(null);
+  const {sub,session} = useContext(AppContext)
+
 
 
   useEffect(() => {
@@ -48,7 +55,7 @@ export default function App() {
           type: 'image/jpeg',
           name: 'image.jpg'
         })
-        const res = await fetch(`${server_url}/upload1`, {
+        const res = await fetch(`${server_url}/${sub}/${session}/upload1`, {
           method: 'POST',
           // headers: {
           //   'Content-Type': 'multipart/form-data', // Set the content type

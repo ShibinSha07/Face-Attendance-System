@@ -10,7 +10,7 @@ const TeacherHomePage = () => {
 
     const navigation = useNavigation();
 
-    const {setSem} = useContext(AppContext)
+    const {setSub} = useContext(AppContext)
 
     return (
         <View style={styles.container}>
@@ -24,10 +24,10 @@ const TeacherHomePage = () => {
                 <Text style={styles.buttonText}>S1</Text>
             </TouchableOpacity> */}
 
-            {['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6'].map((item, index) => (
+            {['Subject 1', 'Subject 2', 'Subject 3', 'Subject 4', 'Subject 5', 'Subject 6'].map((item, index) => (
                 <TouchableOpacity key={index} style={styles.button} onPress={() => { 
                     
-                    setSem(item.charAt(item.length - 1))
+                    setSub(item.charAt(item.length - 1))
                     
                     navigation.navigate('cameraScreen') }}>
                     <Text style={styles.buttonText}>{item}</Text>
