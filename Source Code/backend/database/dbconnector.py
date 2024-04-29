@@ -165,7 +165,7 @@ def student_list(c_id,s_id):
     if connection:
         try:
             cursor=connection.cursor()
-            cursor.execute("SELECT * FROM attendance WHERE c_id=%s AND s_id=%s",(c_id,s_id))
+            cursor.execute("SELECT id,status FROM attendance WHERE c_id=%s AND s_id=%s",(c_id,s_id))
             result=cursor.fetchall()
             return result
         except Exception as e:
