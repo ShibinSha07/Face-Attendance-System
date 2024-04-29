@@ -21,10 +21,9 @@ const CameraScreen = () => {
       </View>
 
       <View style={styles.sessionContainer}>
-        <Text style={styles.label}>Session :</Text>
         <TextInput
           style={styles.input}
-          placeholder="   Session"
+          placeholder="Session"
           onChangeText={setSession}
           keyboardType='numeric'
         />
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     width: '30%',
     height: 40,
-    textAlign: 'center'
+    textAlign: 'center',
   },
 
   cameraIcon: {
