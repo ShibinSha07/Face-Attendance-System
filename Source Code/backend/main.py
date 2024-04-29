@@ -57,12 +57,25 @@ def course_registration():
    success = dbconnector.course_registration(data['student_id'],data['course_id'])
    return jsonify({'success':success})
 
+@app.route('/attendance_percentage', methods=['GET'])
+def get_attendance_percentage():
+    try:
+        student_id = request.args.get('student_id')
+        course_id = request.args.get('course_id')
+        
+        attendance_percentage = dbconnector.get_attendance_percentage(student_id, course_id)
+        
+        return jsonify({'attendance_percentage': attendance_percentage})
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
 
 @app.route('/student_login', methods=['GET']) 
 def student_login():
     data=request.get_json()
     success = dbconnector.student_login(data['username'],data['password'])
     return jsonify({'success': success})
+
 
 
 UPLOAD_FOLDER = r'Source Code\backend\img'
@@ -130,4 +143,4 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.37") #server ip address
+    app.run(debug=True) #server ip address
