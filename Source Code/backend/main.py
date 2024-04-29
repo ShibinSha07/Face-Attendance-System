@@ -114,13 +114,13 @@ def upload_file1(c_id, s_id):
         print(student_ids)
         if student_ids:
     # Mark attendance for each student
-            for student_id in student_ids:
-                # Check if the student's name is in the prediction
-                student_name = dbconnector.get_student_name(student_id)  # Replace with your actual function
-                if student_name in prediction:
-                    dbconnector.mark_attendance(student_id, c_id, s_id, "present")
-                else:
-                    dbconnector.mark_attendance(student_id, c_id, s_id, "absent")
+                for student_id in student_ids:
+                    # Check if the student's name is in the prediction
+                    student_name = dbconnector.get_student_name(student_id)  # Replace with your actual function
+                    if student_name in prediction:
+                        dbconnector.mark_attendance(student_id, c_id, s_id, "present")
+                    else:
+                        dbconnector.mark_attendance(student_id, c_id, s_id, "absent")
         return jsonify({'msg': 'File uploaded successfully'}), 200
     else:
         return jsonify({'error': 'Invalid file format'}), 400

@@ -196,9 +196,12 @@ def get_students_in_course(c_id):
         try:
             cursor = connection.cursor()
             # Pass c_id as a tuple (c_id,)
-            cursor.execute("SELECT id FROM students WHERE id IN (SELECT student_id FROM course_registration WHERE course_id = %s);", (c_id,))
+            cursor.execute("SELECT id FROM students WHERE id IN (SELECT student_id FROM course_registration WHERE course_id = %s);", [c_id])
             result = cursor.fetchall()
-            return result
+            list1=[]
+            for i in result:
+                list1.append(i[0])
+            return list1
         except Exception as e:
             print(e)
             return False
