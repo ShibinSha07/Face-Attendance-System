@@ -13,7 +13,7 @@ def hello_world():
 @app.route('/students', methods=['GET'])
 def get_students():
     students = dbconnector.get_students()
-    # print(students)
+    print(students)
     return jsonify(students)
 
 @app.route('/attendance', methods=['POST'])
@@ -89,6 +89,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/<c_id>/<s_id>/attendance_list', methods=['GET'])
 def attendance_list(c_id,s_id):
     student_list=dbconnector.student_list(c_id,s_id)
+    print(student_list)
     return jsonify(student_list)
     
 
@@ -113,8 +114,16 @@ def upload_file1(c_id, s_id):
         
         prediction = predict_faces(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         print(prediction)
-        print(c_id)
-        print(s_id)
+        student_ids = dbconnector.get_students_in_course(c_id)
+
+    # Mark attendance for each student
+    for student_id in student_ids:
+        # Check if the student's name is in the prediction
+        student_name = dbconnector.get_student_name(student_id)  # Replace with your actual function
+        if student_name in prediction:
+            mark_attendance(s_id, c_id, s_id, "present")
+        else:
+            mark_attendance(s_id, c_id, s_id, "absent")
         return jsonify({'msg': 'File uploaded successfully'}), 200
     else:
         return jsonify({'error': 'Invalid file format'}), 400
@@ -125,4 +134,4 @@ def upload_file1(c_id, s_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="192.168.1.29") #server ip address
+    app.run(debug=True, host="192.168.1.31") #server ip address
