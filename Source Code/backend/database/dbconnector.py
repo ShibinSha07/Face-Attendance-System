@@ -8,7 +8,7 @@ def get_connection():
             host='localhost',
             database='fba',
             user='root',
-            password='mysql'
+            password='1234'
         )
 
         if connection.is_connected():

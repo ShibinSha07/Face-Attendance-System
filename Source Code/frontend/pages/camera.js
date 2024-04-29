@@ -3,17 +3,18 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
-import { MaterialIcons } from '@expo/vector-icons';
 import Button from './Button';
+import { server_url } from '../utils/function';
 
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
 
 export default function App() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
-  const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
+  const [image, setImage] = useState(null);
+
 
   useEffect(() => {
     (async () => {
@@ -35,18 +36,19 @@ export default function App() {
     }
   };
 
-  const uploadPicture = async () => {
+
+  async function uploadPicture() {
     if (image) {
       try {
         const asset = await MediaLibrary.createAssetAsync(image);
         const response = await fetch(image);
         const data = new FormData();
-        data.append('file',{
+        data.append('file', {
           uri: image,
           type: 'image/jpeg',
           name: 'image.jpg'
         })
-        const res = await fetch('http://192.168.1.53:5000/upload1', {
+        const res = await fetch(`${server_url}/upload1`, {
           method: 'POST',
           // headers: {
           //   'Content-Type': 'multipart/form-data', // Set the content type
@@ -60,25 +62,13 @@ export default function App() {
         console.error('Upload error:', error);
       }
     }
-  };
-  // const savePicture = async () => {
-  //   if (image) {
-  //     try {
-  //       const asset = await MediaLibrary.createAssetAsync(image);
-  //       alert('Picture saved! 🎉');
-  //       setImage(null);
-  //       console.log('saved successfully');
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
+  }
 
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;
   }
 
-  
+
   const navigation = useNavigation();
 
   return (
