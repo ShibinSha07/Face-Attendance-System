@@ -27,8 +27,11 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.maintitle}>{isEnabled ? 'Student' : 'Teacher'}</Text>
-      <Text style={styles.title}>Login </Text>
+      <View style={styles.container1}>
+        <Text style={styles.maintitle}>{isEnabled ? 'Student' : 'Teacher'}</Text>
+        <Text style={styles.title}>Login </Text>
+      </View>
+
       <Text style={styles.subTitle}>Smart Attendence System</Text>
       <TextInput
         style={styles.input}
@@ -55,8 +58,8 @@ const LoginScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <Text style={{marginBottom:100}}>{isEnabled ? <Text style={styles.account}>Don't have an Account? <Text style={styles.signup} onPress={() => navigation.navigate('signUp')}>SignUp</Text></Text>
-              : ''}</Text>
+      <Text style={{ marginBottom: 100 }}>{isEnabled ? <Text style={styles.account}>Don't have an Account? <Text style={styles.signup} onPress={() => navigation.navigate('signUp')}>SignUp</Text></Text>
+        : ''}</Text>
       <View>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -78,15 +81,21 @@ const styles = StyleSheet.create({
     backgroundColor: 'aliceblue',
     width: '100%'
   },
+  container1: {
+    flexDirection: 'row',
+    gap: 8,
+    textAlign: 'center'
+  },
   maintitle: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#007bff' 
+    color: '#007bff'
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    marginTop: 3
   },
   subTitle: {
     fontSize: 16,
