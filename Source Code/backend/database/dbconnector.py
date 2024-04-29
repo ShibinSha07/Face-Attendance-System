@@ -139,9 +139,31 @@ def student_login(username,password):
         finally:
             cursor.close()
             connection.close()
+
+def get_attendance_percentage(student_id, course_id):
+    try:
+        connection = get_connection()
+        if connection:
+            cursor = connection.cursor()
+            query = """
+                SELECT (COUNT(CASE WHEN status = 'present' THEN 1 END) / COUNT(*)) * 100 AS attendance_percentage
+                FROM attendance
+                WHERE id = %s AND c_id = %s
+            """
+            cursor.execute(query, (student_id, course_id))
+            result = cursor.fetchone()
+            attendance_percentage = result[0]
+            return attendance_percentage
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        cursor.close()
+        connection.close()
             
+         
 
 get_connection()
+
 
 
 

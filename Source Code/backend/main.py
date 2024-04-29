@@ -57,6 +57,18 @@ def course_registration():
    success = dbconnector.course_registration(data['student_id'],data['course_id'])
    return jsonify({'success':success})
 
+@app.route('/attendance_percentage', methods=['GET'])
+def get_attendance_percentage():
+    try:
+        student_id = request.args.get('student_id')
+        course_id = request.args.get('course_id')
+        
+        attendance_percentage = dbconnector.get_attendance_percentage(student_id, course_id)
+        
+        return jsonify({'attendance_percentage': attendance_percentage})
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
 
 @app.route('/student_login', methods=['GET']) 
 def student_login():
