@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-
-export default function Manual() {
+const Manual = () => {
     const navigation = useNavigation();
 
     const data = [
@@ -38,6 +37,14 @@ export default function Manual() {
         { name: 'Majid', attendance: false },
 
     ];
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxChange = (index) => {
+        const newData = [...data];
+        newData[index].attendance = !newData[index].attendance;
+        setIsChecked(newData[index].attendance);
+    };
     return (
         <View>
             <View style={styles.header}>
@@ -58,6 +65,7 @@ export default function Manual() {
                             <Text style={styles.cell}>{index + 1}</Text>
                             <Text style={styles.cell}>{item.name}</Text>
                             <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
+
                         </View>
                     ))}
 
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         padding: 35,
         color: 'white',
-        fontWeight : 'bold'
+        fontWeight: 'bold'
     },
     headerRow: {
         paddingTop: 10,
@@ -109,3 +117,5 @@ const styles = StyleSheet.create({
         // marginRight: 10
     },
 })
+
+export default Manual;
