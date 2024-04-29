@@ -86,6 +86,17 @@ def upload_file():
 
     # # Save the uploaded file to a location
     file.save('Source Code/backend/uploads/' + file.filename)
+    
+    
+    
+    # # Ensure the upload directory exists
+    # upload_dir = os.path.join('uploads')
+    # if not os.path.exists(upload_dir):
+    #     os.makedirs(upload_dir)
+
+    # # Save the uploaded file to the specified location
+    # file_path = os.path.join(upload_dir, secure_filename(file.filename))
+    # file.save(file_path)
     # predictions=predict
 
 
