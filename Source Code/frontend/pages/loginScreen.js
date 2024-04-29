@@ -27,6 +27,7 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
 
+      <Text style={styles.maintitle}>{isEnabled ? 'Student' : 'Teacher'}</Text>
       <Text style={styles.title}>Login </Text>
       <Text style={styles.subTitle}>Smart Attendence System</Text>
       <TextInput
@@ -54,7 +55,8 @@ const LoginScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <Text style={styles.account}>Don't have an Account? <Text style={styles.signup} onPress={() => navigation.navigate('signUp')}>SignUp</Text></Text>
+      <Text style={{marginBottom:100}}>{isEnabled ? <Text style={styles.account}>Don't have an Account? <Text style={styles.signup} onPress={() => navigation.navigate('signUp')}>SignUp</Text></Text>
+              : ''}</Text>
       <View>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -63,7 +65,6 @@ const LoginScreen = () => {
           onValueChange={toggleSwitch}
           value={isEnabled}
         />
-        <Text style={styles.text}>{isEnabled ? 'Teacher' : 'Student'}</Text>
       </View>
     </View>
   );
@@ -76,6 +77,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'aliceblue',
     width: '100%'
+  },
+  maintitle: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#007bff' 
   },
   title: {
     fontSize: 24,
