@@ -13,7 +13,7 @@ const FirstPage = () => {
             <Text style={styles.heading}><Text style={{ color: '#007bff' }}>Smart</Text> Attendance</Text>
 
             <Image source={require('../assets/firstScreen.png')}
-                style={{ width: 300, height: 200 , marginTop: 100, marginLeft: 20}}
+                style={{ width: 300, height: 200 , marginTop: 100, marginLeft: 35}}
             />
 
             <TouchableOpacity style={styles.buttonText} onPress={() => navigation.navigate('loginScreen')}>
