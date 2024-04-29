@@ -1,46 +1,47 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable, Switch } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
-
+import { useContext } from 'react';
+import AppContext from '../utils/context';
 
 const LoginScreen = () => {
 
   const navigation = useNavigation();
 
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { email, setEmail, username, setUsername, password, setPassword } = useContext(AppContext);
+
+
 
   // const handleLogin = () => {
   //   // Implement your login logic here
   //   console.log('Email:', email);
   //   console.log('Password:', password);
   // };
-    const [isEnabled, setIsEnabled] = useState(false);
-  
-    const toggleSwitch = () => {
-      setIsEnabled(previousState => !previousState);
-    };
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+  };
 
 
   return (
     <View style={styles.container}>
-       
+
+      <Text style={styles.maintitle}>{isEnabled ? 'Student' : 'Teacher'}</Text>
       <Text style={styles.title}>Login </Text>
       <Text style={styles.subTitle}>Smart Attendence System</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
-        value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
       />
       <TextInput
         style={styles.input}
         placeholder="Username"
-        // value={username}
+        value={username}
         onChangeText={setUsername}
-        
+
       />
       <TextInput
         style={styles.input}
@@ -54,7 +55,8 @@ const LoginScreen = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <Text style={styles.account}>Don't have an Account? <Text style={styles.signup} onPress={() => navigation.navigate('signUp')}>SignUp</Text></Text>
+      <Text style={{marginBottom:100}}>{isEnabled ? <Text style={styles.account}>Don't have an Account? <Text style={styles.signup} onPress={() => navigation.navigate('signUp')}>SignUp</Text></Text>
+              : ''}</Text>
       <View>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -63,7 +65,6 @@ const LoginScreen = () => {
           onValueChange={toggleSwitch}
           value={isEnabled}
         />
-        <Text style={styles.text}>{isEnabled ? 'Teacher' : 'Student'}</Text>
       </View>
     </View>
   );
@@ -76,6 +77,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'aliceblue',
     width: '100%'
+  },
+  maintitle: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#007bff' 
   },
   title: {
     fontSize: 24,
@@ -111,7 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }, text: {
     fontSize: 20,
-    marginTop:5,
+    marginTop: 5,
     marginBottom: 10,
   },
   account: {
@@ -119,7 +125,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 120,
   },
-  signup:{
+  signup: {
     color: 'black'
   }
 });

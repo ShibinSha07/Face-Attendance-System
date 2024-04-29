@@ -1,10 +1,15 @@
 import { StyleSheet, View } from 'react-native';
 import Navigation from './navigation.js';
+import { AppProvider } from './utils/context.js';
 
 
 export default function App() {
+
+
   return (
-    <Navigation/>
+    <AppProvider>
+      <Navigation />
+    </AppProvider>
   );
 }
 

@@ -17,7 +17,7 @@ const FirstPage = () => {
             />
 
             <TouchableOpacity style={styles.buttonText} onPress={() => navigation.navigate('loginScreen')}>
-                <Text style={{ color: 'black', fontSize: 20 }}>Get Started >></Text>
+                <Text style={{ color: 'black', fontSize: 20 }}>Get Started {'>>'}</Text>
             </TouchableOpacity>
 
 
