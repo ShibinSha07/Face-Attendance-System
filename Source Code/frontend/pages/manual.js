@@ -51,28 +51,20 @@ const Manual = () => {
                         <View key={index} style={styles.row}>
                             <Text style={styles.cell}>{index + 1}</Text>
                             <Text style={styles.cell}>{item.name}</Text>
-                            {/* <TouchableOpacity  onPress={toggleSwitch}>
-                                <Text style={styles.cell}>{item.attendance ? '❌' : '✅'}</Text>
-                            </TouchableOpacity> */}
+                          
                             <TouchableOpacity onPress={() => toggleAttendance(index)}>
                                 <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text>
                             </TouchableOpacity>
                         </View>
+
                     ))}
 
                 </View>
-                {/* <Text style={styles.cell}>{item.attendance ? '✅' : '❌'}</Text> */}
-                {/* <TouchableOpacity onValueChange={toggleSwitch}
-                    value={isEnabled}> 
-                  <Text>{isEnabled ? '✅' : '❌'}</Text>
-                </TouchableOpacity> */}
-                {/* <TouchableOpacity onPress={toggleSwitch}>
-                        <Text>
-                            {toggleState ? '✅' : '❌'}
-                        </Text>
-                    </TouchableOpacity> */}
-
+                
             </ScrollView>
+            <TouchableOpacity>
+                <Text style={styles.save}>Save</Text>
+            </TouchableOpacity>
 
         </View>
     )
@@ -80,6 +72,13 @@ const Manual = () => {
 
 
 const styles = StyleSheet.create({
+    save: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        textAlign:"center",
+        marginTop:80,
+      },
     header: {
         backgroundColor: '#007bff',
         padding: 30,
