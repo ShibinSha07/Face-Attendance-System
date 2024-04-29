@@ -180,9 +180,9 @@ def get_student_name(s_id):
     if connection:
         try:
             cursor=connection.cursor()
-            cursor.execute("SELECT Name FROM students WHERE id=%s",(s_id))
+            cursor.execute("SELECT Name FROM students WHERE id=%s",(s_id,))
             result=cursor.fetchone()
-            return result
+            return result[0]
         except Exception as e:
             print(e)
             return False
@@ -212,6 +212,5 @@ def get_students_in_course(c_id):
 
 
 get_connection()
-
 
 

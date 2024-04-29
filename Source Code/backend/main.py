@@ -90,7 +90,11 @@ def attendance_list(c_id,s_id):
     
 
 
-
+def is_name_present(name, students_data):
+    for student in students_data:
+        if student[0] == name:
+            return True
+    return False
 
 @app.route('/<c_id>/<s_id>/upload1', methods=['POST'])
 def upload_file1(c_id, s_id):
@@ -117,7 +121,7 @@ def upload_file1(c_id, s_id):
                 for student_id in student_ids:
                     # Check if the student's name is in the prediction
                     student_name = dbconnector.get_student_name(student_id)  # Replace with your actual function
-                    if student_name in prediction:
+                    if is_name_present(student_name, prediction):
                         dbconnector.mark_attendance(student_id, c_id, s_id, "present")
                     else:
                         dbconnector.mark_attendance(student_id, c_id, s_id, "absent")
