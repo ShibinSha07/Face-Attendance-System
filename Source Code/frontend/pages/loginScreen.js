@@ -1,46 +1,46 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Pressable, Switch } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
-
+import { useContext } from 'react';
+import AppContext from '../utils/context';
 
 const LoginScreen = () => {
 
   const navigation = useNavigation();
 
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { email, setEmail, username, setUsername, password, setPassword } = useContext(AppContext);
+
+
 
   // const handleLogin = () => {
   //   // Implement your login logic here
   //   console.log('Email:', email);
   //   console.log('Password:', password);
   // };
-    const [isEnabled, setIsEnabled] = useState(false);
-  
-    const toggleSwitch = () => {
-      setIsEnabled(previousState => !previousState);
-    };
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+  };
 
 
   return (
     <View style={styles.container}>
-       
+
       <Text style={styles.title}>Login </Text>
       <Text style={styles.subTitle}>Smart Attendence System</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
-        value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
       />
       <TextInput
         style={styles.input}
         placeholder="Username"
-        // value={username}
+        value={username}
         onChangeText={setUsername}
-        
+
       />
       <TextInput
         style={styles.input}
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }, text: {
     fontSize: 20,
-    marginTop:5,
+    marginTop: 5,
     marginBottom: 10,
   },
   account: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 120,
   },
-  signup:{
+  signup: {
     color: 'black'
   }
 });

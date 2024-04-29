@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
+import { useContext } from 'react';
+import AppContext from '../utils/context';
+
 
 
 const TeacherHomePage = () => {
 
     const navigation = useNavigation();
+
+    const {setSem} = useContext(AppContext)
 
     return (
         <View style={styles.container}>
@@ -20,7 +25,11 @@ const TeacherHomePage = () => {
             </TouchableOpacity> */}
 
             {['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6'].map((item, index) => (
-                <TouchableOpacity key={index} style={styles.button} onPress={() => { navigation.navigate('cameraScreen') }}>
+                <TouchableOpacity key={index} style={styles.button} onPress={() => { 
+                    
+                    setSem(item.charAt(item.length - 1))
+                    
+                    navigation.navigate('cameraScreen') }}>
                     <Text style={styles.buttonText}>{item}</Text>
                 </TouchableOpacity>
             ))}
