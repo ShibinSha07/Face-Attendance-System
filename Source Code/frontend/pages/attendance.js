@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet , ScrollView} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 const AttendanceScreen = () => {
 
@@ -39,10 +39,11 @@ const AttendanceScreen = () => {
 
   return (
     <View style={styles.container}>
-      
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Attendance details               <Text>S6   CSE</Text></Text>
-        </View>
+
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Attendance details               <Text>S6   CSE</Text></Text>
+      </View>
+
       <ScrollView>
         <View style={styles.headerRow}>
           <Text style={styles.headText}>Roll No.</Text>
@@ -90,7 +91,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   headText: {
-    marginRight: 80
+    marginRight: 70,
+    fontSize: 16,
+    fontWeight: 'bold'
   },
   body: {
     backgroundColor: 'white',

@@ -9,6 +9,7 @@ import teacherHome from './pages/teacherHome.js';
 import cameraScreen from './pages/cameraScreen.js';
 import attendance from './pages/attendance.js';
 import camera from './pages/camera.js';
+import manual from './pages/manual.js';
 
 
 
@@ -25,7 +26,8 @@ export default function Navigation(){
         <Stack.Screen name="teacherHome" component={teacherHome} /> 
         <Stack.Screen name="cameraScreen" component={cameraScreen} /> 
         <Stack.Screen name="attendance" component={attendance} /> 
-        <Stack.Screen name="camera" component={camera} /> 
+        <Stack.Screen name="camera" component={camera} />
+        <Stack.Screen name="manual" component={manual} />
         
       </Stack.Navigator>
     </NavigationContainer>
