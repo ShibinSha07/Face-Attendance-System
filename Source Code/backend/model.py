@@ -33,9 +33,9 @@ def predict_faces(img_path, threshold=0.6):
     return predictions
 
 # Example usage:
-img_path = r"Source Code\backend\uploads\image.jpg"
-predictions = predict_faces(img_path)
-print(predictions)
+# img_path = r"Source Code\backend\uploads\image.jpg"
+# predictions = predict_faces(img_path)
+# print(predictions)
 # # for name, (top, right, bottom, left) in predictions:
 #     # Scale back the face locations since the image was resized
 #     top *= 4
