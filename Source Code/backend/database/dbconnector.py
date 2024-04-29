@@ -191,12 +191,13 @@ def get_student_name(s_id):
             connection.close()
 
 def get_students_in_course(c_id):
-    connection=get_connection()
+    connection = get_connection()
     if connection:
         try:
-            cursor=connection.cursor()
-            cursor.execute("SELECT id FROM students WHERE id IN (SELECT student_id FROM course_registration WHERE course_id = %s);",(c_id))
-            result=cursor.fetchall()
+            cursor = connection.cursor()
+            # Pass c_id as a tuple (c_id,)
+            cursor.execute("SELECT id FROM students WHERE id IN (SELECT student_id FROM course_registration WHERE course_id = %s);", (c_id,))
+            result = cursor.fetchall()
             return result
         except Exception as e:
             print(e)
@@ -205,8 +206,9 @@ def get_students_in_course(c_id):
             cursor.close()
             connection.close()
 
-get_connection()
 
+
+get_connection()
 
 
 
