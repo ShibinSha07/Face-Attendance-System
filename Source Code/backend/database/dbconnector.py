@@ -32,12 +32,12 @@ def get_students():
             cursor.close()
             connection.close()
 
-def mark_attendance(student_id, course_id,session_id, status):
+def mark_attendance(student_id, course_id, session_id, status):
     connection = get_connection()
     if connection:
         try:
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO attendance (id, c_id,s_id, status) VALUES (%s, %s, %s, %s)", (student_id, course_id,session_id, status))
+            cursor.execute("INSERT INTO attendance (id, c_id, s_id, status) VALUES (%s, %s, %s, %s)", (student_id, course_id, session_id, status))
             connection.commit()
             return True
         except Exception as e:
