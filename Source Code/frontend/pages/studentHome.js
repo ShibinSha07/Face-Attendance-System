@@ -1,7 +1,8 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
+import { server_url } from '../utils/function';
 // import AppContext from '../utils/context';
 
 const StudentHomePage = () => {
@@ -52,15 +53,14 @@ const StudentHomePage = () => {
                     <Text style={styles.buttonText}>{subject.name}                                     {subject.percentage}%</Text>
                 </TouchableOpacity>
             ))} */}
-
-            {studentPerc.map((e, index) => (
-                <View style={styles.row} key={index}>
-                    <Text>{`${e[0]}`}</Text>
-                    <Text>{`${e[1]}`}</Text>
-                    <Text>{`${e[2]}`}</Text>
-
-                </View>
-            ))}
+            <View style={styles.row} >
+                {studentPerc.map((e) => (
+                    <View style={styles.button}>
+                        <Text style={styles.buttonText}>Subject</Text>
+                        <Text>{`${e} %`}</Text>
+                    </View>
+                ))}
+            </View>
         </View>
     );
 };
@@ -87,12 +87,19 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 5,
         marginBottom: 10,
+        flexDirection: 'row',
+        gap: 200,
     },
     buttonText: {
         textAlign: 'center',
         color: '#000',
         fontSize: 20,
     },
+    // subSession: {
+    //     flexDirection: 'row',
+    //     gap: 50,
+    //     padding: 10
+    // }
 });
 
 export default StudentHomePage;
