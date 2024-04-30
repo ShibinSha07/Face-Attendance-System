@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { createNativeStackNavigator, useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
-import AppContext from '../utils/context';
+// import AppContext from '../utils/context';
 
 const StudentHomePage = () => {
-    const { setSub } = useContext(AppContext);
+    // const { setSub } = useContext(AppContext);
     const navigation = useNavigation();
 
+    const [studentPerc, setStudentPerc] = useState([]);
+
     // Sample data containing subject names and their respective percentages
-    const subjectData = [
-        { name: 'Subject 1', percentage: 80 },
-        { name: 'Subject 2', percentage: 65 },
-        { name: 'Subject 3', percentage: 75 },
-        { name: 'Subject 4', percentage: 90 },
-        { name: 'Subject 5', percentage: 85 },
-        { name: 'Subject 6', percentage: 70 },
-    ];
+    // const subjectData = [
+    //     { name: 'Subject 1', percentage: 80 },
+    //     { name: 'Subject 2', percentage: 65 },
+    //     { name: 'Subject 3', percentage: 75 },
+    //     { name: 'Subject 4', percentage: 90 },
+    //     { name: 'Subject 5', percentage: 85 },
+    //     { name: 'Subject 6', percentage: 70 },
+    // ];
+
+    useEffect(() => {
+        fetchAttendanceData();
+    }, []); // Fetch data on component mount
+
+    const fetchAttendanceData = async () => {
+        try {
+            const response = await fetch(`${server_url}/1/get_attendance`);
+            const data = await response.json();
+            console.log(data);
+            setStudentPerc(data);
+        } catch (error) {
+            console.error('Error fetching attendance data:', error);
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -26,14 +43,23 @@ const StudentHomePage = () => {
             </View>
 
             {/* Render subject buttons with their respective percentages */}
-            {subjectData.map((subject, index) => (
+            {/* {subjectData.map((subject, index) => (
                 <TouchableOpacity
                     key={index}
                     style={styles.button}
-                    onPress={() => setSub(subject.name.charAt(subject.name.length - 1))}
+                    // onPress={() => setSub(subject.name.charAt(subject.name.length - 1))}
                 >
                     <Text style={styles.buttonText}>{subject.name}                                     {subject.percentage}%</Text>
                 </TouchableOpacity>
+            ))} */}
+
+            {studentPerc.map((e, index) => (
+                <View style={styles.row} key={index}>
+                    <Text>{`${e[0]}`}</Text>
+                    <Text>{`${e[1]}`}</Text>
+                    <Text>{`${e[2]}`}</Text>
+
+                </View>
             ))}
         </View>
     );

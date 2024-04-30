@@ -17,6 +17,7 @@ const LoginScreen = () => {
   //   console.log('Email:', email);
   //   console.log('Password:', password);
   // };
+
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
@@ -39,13 +40,12 @@ const LoginScreen = () => {
         onChangeText={setEmail}
         autoCapitalize="none"
       />
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         placeholder="Username"
         value={username}
         onChangeText={setUsername}
-
-      />
+      /> */}
       <TextInput
         style={styles.input}
         placeholder="Password"
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 16,
-    marginBottom: 20
+    marginBottom: 50
   },
   input: {
     width: '80%',
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     marginBottom: 20,
     paddingLeft: 15,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   button: {
     width: '80%',
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#007bff',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: 10,
     marginTop: 20,
     marginBottom: 30
   },
